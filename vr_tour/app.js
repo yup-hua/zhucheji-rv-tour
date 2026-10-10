@@ -5,12 +5,14 @@ const rad=Math.PI/180,clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),wrap=x=>((x+180)%
 let current=0,loadedSlug='',textures=[],ready=false,allReady=false,loadId=0,yaw=0,pitch=0,auto=false,autoSign=1,autoDistance=0;
 let gyro=false,gyroOrigin=null,gyroTarget=null,gyroTimer=null,split=false,xrSession=null,xrRef=null,xrOrigin=null,last=0,disposed=false;
 const minZoom=.8,maxZoom=2;
+const sourceAspect=1672/941,safeVerticalTangent=Math.cos(15*rad)/sourceAspect*.98;
 let zoom=1;
 let startAutoWhenReady=new URLSearchParams(location.search).get('auto')==='1';
 // Keep the controls inside the fullscreen stage as well as the normal layout.
 stage.append($('zoom-controls'));
-function updateZoom(){ $('zoom-level').textContent=Math.round(zoom*100)+'%';$('zoom-out').disabled=!!xrSession||zoom<=minZoom;$('zoom-in').disabled=!!xrSession||zoom>=maxZoom;$('zoom-reset').disabled=!!xrSession||Math.abs(zoom-1)<.001 }
-function setZoom(value){if(xrSession)return;zoom=clamp(value,minZoom,maxZoom);stopAuto();updateZoom()}
+function viewLimits(){const w=Math.max(1,canvas.clientWidth),h=Math.max(1,canvas.clientHeight),aspect=split?w/(2*h):(w/h<1.4?16/9:w/h),baseTy=Math.min(Math.tan(29*rad)/aspect,Math.tan((split?29:16)*rad)),zoomFloor=Math.max(minZoom,baseTy/safeVerticalTangent);return{zoomFloor,pitchLimit:Math.max(0,Math.min(12,(Math.atan(safeVerticalTangent)-Math.atan(baseTy/Math.max(zoom,zoomFloor)))/rad))}}
+function updateZoom(){const floor=viewLimits().zoomFloor;$('zoom-level').textContent=Math.round(zoom*100)+'%';$('zoom-out').disabled=!!xrSession||zoom<=floor+.00001;$('zoom-in').disabled=!!xrSession||zoom>=maxZoom;$('zoom-reset').disabled=!!xrSession||Math.abs(zoom-Math.max(1,floor))<.001}
+function setZoom(value){if(xrSession)return;zoom=clamp(value,viewLimits().zoomFloor,maxZoom);stopAuto();updateUI()}
 const stats={frames:0,sceneCommits:0,errors:[],xrFrames:0};
 function message(text){$('message').textContent=text}
 function fail(e){stats.errors.push(String(e.message||e));message(String(e.message||e))}
@@ -37,7 +39,7 @@ function sceneAssets(scene){return new Promise((resolve,reject)=>{const script=d
 function imageAsset(asset,id){return new Promise((resolve,reject)=>{const img=new Image();img.decoding='async';img.onload=()=>{try{resolve(id===loadId?upload(img):null)}catch(e){reject(e)}};img.onerror=()=>reject(Error('图片加载失败：'+asset.base+'°'));img.src=asset.data||asset.src})}
 function deleteTextures(items){for(const item of items)if(item)gl.deleteTexture(item.tex)}
 function stopAuto(){auto=false;autoDistance=0;$('auto').setAttribute('aria-pressed','false');$('auto').textContent='自动巡游'}
-function updateUI(){yaw=clamp(yaw,-90,90);pitch=clamp(pitch,-12,12);$('yaw').value=yaw;$('heading').textContent=(Math.abs(yaw)<.1?'正前方':(yaw<0?'左 ':'右 ')+Math.abs(yaw).toFixed(0)+'°')+(gyro?' · 手机转头':'')+(split?' · 单目分屏':'');updateZoom()}
+function updateUI(){zoom=clamp(zoom,viewLimits().zoomFloor,maxZoom);const limit=viewLimits().pitchLimit;yaw=clamp(yaw,allReady?-90:0,allReady?90:0);pitch=clamp(pitch,-limit,limit);$('yaw').value=yaw;$('heading').textContent=(Math.abs(yaw)<.1?'正前方':(yaw<0?'左 ':'右 ')+Math.abs(yaw).toFixed(0)+'°')+(gyro?' · 手机转头':'')+(split?' · 单目分屏':'');updateZoom()}
 async function showScene(index,keepAuto=false){const id=++loadId;allReady=false;current=(index+scenes.length)%scenes.length;const scene=scenes[current];if(!keepAuto)stopAuto();yaw=0;pitch=0;gyroOrigin=null;gyroTarget=null;autoSign=1;autoDistance=0;$('scene').value=scene.slug;$('scene-title').textContent=scene.name;$('scene-info').textContent=scene.info;$('position').textContent=String(current+1).padStart(2,'0')+' / '+scenes.length;$('scenes').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===current)));history.replaceState(null,'','#'+scene.slug);message('正在载入 '+scene.name+'…');updateUI();
  let next=[];try{const items=await sceneAssets(scene);if(id!==loadId)return;const front=await imageAsset(items.find(a=>a.base===0),id);if(id!==loadId)return;next[3]=front;deleteTextures(textures);textures=next;ready=true;allReady=false;loadedSlug=scene.slug;stats.sceneCommits++;updateHud();message('正前方已就绪，正在载入两侧视野…');
  await Promise.all(items.filter(a=>a.base!==0).map(async a=>{const tex=await imageAsset(a,id);if(id!==loadId){if(tex)gl.deleteTexture(tex.tex);return}next[(a.base+90)/30]=tex}));if(id!==loadId)return;allReady=true;message('');updateHud();if(startAutoWhenReady){startAutoWhenReady=false;$('auto').click()}
@@ -81,5 +83,5 @@ async function capabilities(){const secure=isSecureContext?'安全环境':'非�
 scenes.forEach((s,i)=>{const o=new Option(String(i+1).padStart(2,'0')+' · '+s.name,s.slug);$('scene').add(o);const b=document.createElement('button');b.textContent=s.name;b.onclick=()=>showScene(i);$('scenes').append(b)});
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();ready=false;allReady=false;stopAuto();message('图形上下文已丢失，请刷新页面重新载入')});
 addEventListener('pagehide',()=>{disposed=true;loadId++;disableGyro();deleteTextures(textures);if(xrSession)xrSession.end().catch(()=>{})});
-window.VR_DEBUG={state:()=>({current,loadedSlug,ready,allReady,yaw,pitch,zoom,auto,gyro,split,xr:!!xrSession,textures:textures.map(t=>t&&[t.width,t.height]),stats}),setAngles:(y,p=0)=>{stopAuto();yaw=y;pitch=p;updateUI()},next:()=>showScene(current+1),inverse4,deviceAngles,render,gl};
+window.VR_DEBUG={state:()=>({current,loadedSlug,ready,allReady,yaw,pitch,zoom,viewLimits:viewLimits(),auto,gyro,split,xr:!!xrSession,textures:textures.map(t=>t&&[t.width,t.height]),stats}),setAngles:(y,p=0)=>{stopAuto();yaw=y;pitch=p;updateUI()},next:()=>showScene(current+1),inverse4,deviceAngles,render,gl};
 const initial=scenes.findIndex(s=>s.slug===location.hash.slice(1));showScene(initial<0?0:initial).catch(fail);capabilities();requestAnimationFrame(draw);
