@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#071c26"><title>驻车及房车自驾车友服务驿站 · 沉浸巡游</title><link rel="stylesheet" href="style.css?v=20261010-immersive5"><script>(()=>{const slugs=["overview", "entrance", "parking", "kitchen", "charging", "service", "hookups", "edge", "reception_interior", "market_interior", "laundry_interior", "kitchen_interior", "shower_interior", "accessible_interior", "lakeside_walk", "camp_pad_detail"];const slug=location.hash.slice(1);const link=document.createElement("link");link.rel="preload";link.as="image";link.fetchPriority="high";link.href="assets/"+(slugs.includes(slug)?slug:"entrance")+"/heading0.webp";document.head.append(link)})()</script></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#071c26"><title>驻车及房车自驾车友服务驿站 · 沉浸巡游</title><link rel="stylesheet" href="style.css?v=20261010-routes6"><script>(()=>{const slugs=["overview", "entrance", "parking", "kitchen", "charging", "service", "hookups", "edge", "reception_interior", "market_interior", "laundry_interior", "kitchen_interior", "shower_interior", "accessible_interior", "lakeside_walk", "camp_pad_detail"];const slug=location.hash.slice(1);const link=document.createElement("link");link.rel="preload";link.as="image";link.fetchPriority="high";link.href="assets/"+(slugs.includes(slug)?slug:"entrance")+"/heading0.webp";document.head.append(link)})()</script></head>
 <body><main id="app"><section id="stage" aria-label="驻车集沉浸巡游">
 <canvas id="view" tabindex="0" aria-label="拖动观看，双指或滚轮缩放，点击画面箭头进入功能区"></canvas>
+<button id="back-scene" class="back-toggle" hidden aria-label="返回上一处">‹ 返回</button>
 <button id="menu-toggle" class="menu-toggle" aria-label="打开功能区与操作菜单" aria-haspopup="dialog" aria-controls="tour-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="15" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/></svg><span>功能区</span></button>
 <nav id="scene-links" class="scene-links" aria-label="画面内场景入口"></nav>
 <div id="gesture-hint" class="gesture-hint">左右拖动看风景 · 点箭头进入</div>
 <div id="message" role="status" aria-live="polite">正在载入入口门头…</div>
 <dialog id="tour-menu" aria-labelledby="menu-title">
 <div class="menu-heading"><div><span class="eyebrow">驻车集 · 沉浸巡游</span><h1 id="menu-title">选择功能区</h1></div><button id="menu-close" aria-label="关闭菜单">×</button></div>
-<p class="location">当前位置：<strong id="scene-title">入口门头</strong><span id="position">02 / 16</span></p><p id="scene-info" class="scene-info"></p>
+<p class="location">当前位置：<strong id="scene-title">入口门头</strong><span id="position">已看 0 / 16</span></p><p id="scene-info" class="scene-info"></p>
 <label class="sr-only" for="scene">选择功能区</label><select id="scene" class="sr-only" tabindex="-1" aria-hidden="true"></select>
 <nav id="scenes" aria-label="全部16个功能场景"></nav>
 <details class="operations"><summary>缩放与更多操作</summary>
@@ -18,4 +19,4 @@
 </details>
 <details class="help"><summary>观看说明</summary><p>驻车及房车自驾车友服务驿站。全部16个场景保留，点击画面箭头或本菜单切换。竖屏铺满屏幕，保持图像比例，左右视野可拖动查看；横屏可看到更宽的画面。滚轮与双指支持缩放。扫码默认自主浏览，自动巡游可在更多操作中开启。</p><p>使用已确认的112张方向图，固定中心左90°至右90°，不是完整360°实景或自由行走。画面箭头是功能区快捷切换，不代表测绘坐标或连续行走路径。未重新生图、拉伸或镜像补景。</p><p id="capability">正在检查设备能力…</p><p>手机转头需要设备与浏览器授权。眼镜分屏是相同单目画面，没有真实双眼景深；头显需支持WebXR。传感器及头显实机效果需在实际设备上验证。<a href="使用说明.md">详细说明</a>。</p></details>
 </dialog>
-</section><noscript>此巡游需要 JavaScript，请启用后重新打开。</noscript></main><script src="scenes.js"></script><script src="app.js?v=20261010-immersive5"></script></body></html>
+</section><noscript>此巡游需要 JavaScript，请启用后重新打开。</noscript></main><script src="scenes.js"></script><script src="app.js?v=20261010-routes6"></script></body></html>
