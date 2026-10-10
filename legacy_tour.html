@@ -1,0 +1,172 @@
+<!doctype html><html lang="zh-CN"><head><meta name="tour-revision" content="20261009-render-v5"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>驻车及房车自驾车友服务驿站｜方案全景360巡游</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;height:100dvh;overflow:hidden;background:#06141c;font-family:Arial,"Microsoft YaHei",sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}canvas{position:fixed;inset:0;display:block;width:100%;height:100%;cursor:grab;touch-action:none}canvas.drag{cursor:grabbing}.panel{position:fixed;z-index:4;color:#f2fcff;background:rgba(5,26,36,.94);border:1px solid rgba(93,205,231,.86);box-shadow:0 8px 30px rgba(0,0,0,.24)}.brand{left:18px;top:18px;width:350px;padding:15px 17px;border-radius:15px}.brand h1{margin:0 0 7px;color:#9aeeFA;font-size:21px;line-height:1.25;font-weight:700;white-space:nowrap}.brand p{margin:4px 0;font-size:12px;line-height:1.45;color:#e0f2f6}.info{right:18px;top:84px;width:300px;padding:14px 16px;border-radius:15px;font-size:14px;line-height:1.65}.info b{display:block;margin-bottom:5px;color:#9aeefa;font-size:17px}.nav{position:fixed;z-index:5;left:50%;top:18px;transform:translateX(-50%);display:flex;gap:7px;max-width:66vw;padding:7px;overflow-x:auto;border-radius:24px;background:rgba(5,26,36,.95);border:1px solid rgba(93,205,231,.86);box-shadow:0 6px 20px rgba(0,0,0,.2);scrollbar-width:none}.nav::-webkit-scrollbar{display:none}button{border:0;border-radius:17px;padding:9px 13px;background:#124a5c;color:#f2fcff;cursor:pointer;white-space:nowrap;font-family:inherit;font-size:14px;font-weight:600;line-height:1.25}button.active,.tools .primary{background:#1392b5}.tools{position:fixed;right:18px;bottom:18px;z-index:5;display:flex;gap:8px}.hint{position:fixed;left:50%;bottom:18px;z-index:4;transform:translateX(-50%);padding:8px 14px;border-radius:15px;background:rgba(5,26,36,.9);color:#e0f2f6;font-size:12px;font-weight:600}.loading{position:fixed;inset:0;z-index:8;display:grid;place-items:center;background:#06141c;color:#9aeefa;font-size:16px;font-weight:600}.loading.hide{display:none}@media(max-width:700px){.brand{left:max(8px,env(safe-area-inset-left));top:max(8px,env(safe-area-inset-top));width:auto;max-width:calc(100vw - 16px);padding:9px 12px;border-radius:11px}.brand h1{margin:0;font-size:16px;line-height:1.25}.brand p{display:none}.info{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));top:calc(max(8px,env(safe-area-inset-top)) + 48px);width:auto;max-width:none;padding:8px 11px;border-radius:10px;font-size:11px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}.info b{display:inline;margin:0 7px 0 0;font-size:13px}.nav{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));top:auto;bottom:calc(max(8px,env(safe-area-inset-bottom)) + 51px);transform:none;max-width:none;gap:5px;padding:5px;border-radius:18px}.nav button{min-height:37px;padding:8px 11px;font-size:12px}.tools{left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:max(8px,env(safe-area-inset-bottom));justify-content:center;gap:5px}.tools button{min-height:39px;padding:8px 13px;font-size:12px;flex:1;max-width:118px}.tools #out,.tools #in{display:none}.hint{display:none}}@media(max-width:900px) and (orientation:landscape){.brand{max-width:36vw}.brand h1{font-size:14px}.info{display:none}.nav{left:38vw;right:8px;top:8px;bottom:auto}.tools{left:auto;right:8px;bottom:8px}.tools button{flex:none}}
+@media(min-width:901px){.nav{left:auto;right:18px;transform:none;max-width:calc(100vw - 410px)}}
+.loading.compact{inset:auto;top:50%;left:50%;transform:translate(-50%,-50%);padding:10px 16px;border-radius:12px;background:rgba(5,26,36,.82);font-size:13px;max-width:90vw;cursor:pointer;pointer-events:auto}
+body{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif}
+.original-panel{position:fixed;inset:0;z-index:12;overflow:auto;background:#06141c;touch-action:pan-x pan-y pinch-zoom;padding-top:58px}.original-panel img{display:block;width:auto;max-width:none;height:auto;margin:0 auto}.original-close{position:fixed;right:16px;top:12px;z-index:13;background:#1392b5;min-height:40px}
+.detail-frame{position:fixed;inset:0;z-index:1;background:#06141c;overflow:hidden}
+@media(max-width:700px){.detail-mode .hint{width:calc(100vw - 16px);text-align:center;white-space:nowrap}}
+.brand{width:378px}.brand h1{font-size:20px;white-space:normal}.brand p{font-size:13px}
+.info{font-size:16px;line-height:1.7}.info b{font-size:20px}
+.loading.compact{top:auto;bottom:80px;transform:translateX(-50%);background:rgba(5,26,36,.92)}
+.facility-labels{position:fixed;inset:0;z-index:3;pointer-events:none}.facility-label{position:absolute;transform:translate(-50%,-100%);font-size:17px;font-weight:600;line-height:1.3;white-space:nowrap;color:white;background:#063346ed;border:1px solid #a8e0ee;padding:7px 12px;border-radius:8px;box-shadow:0 3px 12px #001b2940}.facility-label:after{content:"";position:absolute;left:50%;top:100%;height:18px;border-left:1px solid #a8e0ee}
+.report-panel{position:fixed;z-index:4;left:18px;bottom:84px;width:450px;max-width:calc(100vw - 36px);background:#092935f2;color:#f7fcff;border:1px solid #abdbe7;border-radius:16px;padding:20px 24px;box-shadow:0 12px 40px #0003}.report-panel h2{font-size:26px;line-height:1.35;margin:9px 0 12px}.report-panel p{font-size:18px;line-height:1.8;margin:0}.report-caption{font-size:13px;letter-spacing:3px;color:#b5e7ef}.report-facilities{font-size:17px;line-height:1.9;margin-top:10px;color:#b5e7ef}.report-mode .info,.report-mode .hint{display:none}[hidden]{display:none!important}
+@media(min-width:901px){.nav{max-width:calc(100vw - 433px)}}
+@media(max-width:700px){.brand{width:auto}.brand h1{font-size:16px}.info{font-size:12px}.info b{font-size:14px}.facility-label{font-size:15px;padding:6px 10px}.report-panel{left:8px;bottom:112px;max-width:calc(100vw - 16px);padding:15px 17px}.report-panel h2{font-size:21px}.report-panel p{font-size:16px}.report-facilities{font-size:15px}.tools button{padding:8px 7px}.loading.compact{bottom:112px;font-size:12px}.report-mode .loading.compact{bottom:auto;top:110px}}
+.detail-view{display:block;width:100%;height:100%;object-fit:contain;background:#06141c}.detail-mode #reset,.detail-mode #in,.detail-mode #out{display:none}body:not(.detail-mode) #detailOriginal{display:none}.detail-mode .brand:after{content:"AI方案近景 · 非现场实拍";display:block;font-size:12px;margin-top:6px;color:#b5e7ef}.detail-mode .hint{display:none}.detail-mode .info{top:auto;bottom:76px;font-size:13px;width:290px;padding:10px 13px}.detail-mode .info b{font-size:16px}@media(max-width:700px){.detail-mode .info{top:58px;bottom:auto;width:auto;font-size:12px}.detail-mode .brand:after{display:none}.tools{flex-wrap:wrap}.tools button{max-width:none;flex:1}.detail-mode .detail-frame{top:132px;bottom:114px;overflow-x:auto;overflow-y:hidden;touch-action:pan-x}.detail-mode .detail-view{width:auto;height:100%;min-width:100%;max-width:none;object-fit:contain}.detail-mode .hint{display:block;top:111px;bottom:auto;padding:0;font-size:11px;background:none;color:#b5e7ef}}
+
+</style></head><body><div class="loading" id="loading">正在加载方案场景…</div><div class="panel brand"><h1>驻车及房车自驾车友服务驿站</h1><p>360°方案巡游 · 支持汇报阅读</p><p>拖动环视 · 点击场景切换 · 支持手机巡游</p></div><div class="nav" id="nav"></div><div class="panel info" id="info"></div><div class="tools"><button id="out">缩小 −</button><button id="in">放大 ＋</button><button id="reset">复位视角</button><button id="auto" class="primary">自动巡游</button><button id="full">全屏</button></div><div class="hint" id="hint">近景左右滑动 · AI方案示意，非现场实拍</div><canvas id="vr"></canvas><script>
+const scenes=[{"name":"总览","slug":"overview","info":"驻车及房车自驾车友服务驿站整体规划：入口、复合营位、服务中心、共享厨房天幕区与快充区。","src":"true_panos_4k/overview-hd-fbc0015896db.webp","preview":"true_panos_4k/overview-preview-296470a412e8.webp","detailSrc":"presentation_details/overview-91ac89673931.webp"},{"name":"入口门头","slug":"entrance","info":"浅蓝品牌精神堡垒、门岗和清晰的人车分流入口。","src":"true_panos_4k/entrance-hd-d981d0774782.webp","preview":"true_panos_4k/entrance-preview-a783c723ec65.webp","detailSrc":"presentation_details/entrance-d2054cfc210f.webp"},{"name":"车＋帐篷复合营位","slug":"parking","info":"建议单元约6.5m×5.0m，车辆旁预留帐篷或天幕空间，并设置水电接口。","src":"true_panos_4k/parking-hd-8e1c8e6c8233.webp","preview":"true_panos_4k/parking-preview-f7547324c085.webp","detailSrc":"presentation_details/parking-99f6f7092ac7.webp"},{"name":"共享厨房·天幕聚餐区","slug":"kitchen","info":"共享厨房、露营桌椅和大天幕共同构成开放聚餐交流区。","src":"true_panos_4k/kitchen-hd-24cd935a5ddf.webp","preview":"true_panos_4k/kitchen-preview-4d3e8cdd16b6.webp","detailSrc":"presentation_details/kitchen-4d9fd7508771.webp"},{"name":"快充区","slug":"charging","info":"6台直流快充桩配简洁开放式雨棚，充电区不设置集装箱。","src":"true_panos_4k/charging-hd-88d2a293a085.webp","preview":"true_panos_4k/charging-preview-1bfa27aa69a2.webp","detailSrc":"presentation_details/charging-562c70bddfe8.webp"},{"name":"服务中心·驻车集超市","slug":"service","info":"服务接待、驻车集超市、卫生间、淋浴间、洗衣房、共享厨房与办公。","src":"true_panos_4k/service-hd-1c10ef645c0c.webp","preview":"true_panos_4k/service-preview-521cc7539977.webp","detailSrc":"presentation_details/service-15508573162b.webp"},{"name":"水电排污接口","slug":"hookups","info":"营位侧边集中配置饮用水、用电、灰水与黑水排放接口。","src":"true_panos_4k/hookups-hd-7dd04a0a2b43.webp","preview":"true_panos_4k/hookups-preview-03dc5ab37064.webp","detailSrc":"presentation_details/hookups-0ee442bcef8c.webp"},{"name":"边缘配套","slug":"edge","info":"垃圾分类、应急信息、导视、照明、监控和绿化围挡。","src":"true_panos_4k/edge-hd-564c34109e39.webp","preview":"true_panos_4k/edge-preview-9368ea93fdfa.webp","detailSrc":"presentation_details/edge-c9c6efc19c8e.webp"}];const canvas=document.getElementById('vr');const gl=canvas.getContext('webgl',{antialias:true,alpha:false});const loading=document.getElementById('loading');
+function fail(msg){loading.classList.remove('hide');loading.textContent='场景加载失败：'+msg}
+if(!gl)fail('浏览器未启用WebGL');
+const vs=`attribute vec2 a;varying vec2 uv;void main(){uv=a*.5+.5;gl_Position=vec4(a,0.,1.);}`;
+const fs="precision highp float;\nvarying vec2 uv;\nuniform sampler2D pano;\nuniform float yaw,pitch,tanfov,aspect;\nuniform vec2 textureSize;\nuniform int highQuality;\nmat3 ry(float a){float c=cos(a),s=sin(a);return mat3(c,0.,-s,0.,1.,0.,s,0.,c);}\nmat3 rx(float a){float c=cos(a),s=sin(a);return mat3(1.,0.,0.,0.,c,s,0.,-s,c);}\nvec4 lookup(vec2 p){return texture2D(pano,vec2(fract(p.x),clamp(p.y,.5/textureSize.y,1.-.5/textureSize.y)));}\n// Separable Catmull-Rom reconstruction: nine bilinear taps, no new source detail.\nvec4 reconstruct(vec2 t){\n vec2 p=t*textureSize,base=floor(p-.5)+.5,f=p-base;\n vec2 f2=f*f,f3=f2*f;\n vec2 w0=-.5*f+f2-.5*f3,w1=1.-2.5*f2+1.5*f3;\n vec2 w2=.5*f+2.*f2-1.5*f3,w3=-.5*f2+.5*f3,w12=w1+w2;\n vec2 p0=(base-1.)/textureSize,p12=(base+w2/w12)/textureSize,p3=(base+2.)/textureSize;\n vec4 c=lookup(vec2(p0.x,p0.y))*w0.x*w0.y\n       +lookup(vec2(p12.x,p0.y))*w12.x*w0.y\n       +lookup(vec2(p3.x,p0.y))*w3.x*w0.y\n       +lookup(vec2(p0.x,p12.y))*w0.x*w12.y\n       +lookup(vec2(p12.x,p12.y))*w12.x*w12.y\n       +lookup(vec2(p3.x,p12.y))*w3.x*w12.y\n       +lookup(vec2(p0.x,p3.y))*w0.x*w3.y\n       +lookup(vec2(p12.x,p3.y))*w12.x*w3.y\n       +lookup(vec2(p3.x,p3.y))*w3.x*w3.y;\n vec4 linear=lookup(t);\n // Bound ringing around white lettering and dark branches.\n return clamp(c, max(vec4(0.),linear-.04),min(vec4(1.),linear+.04));\n}\nvoid main(){\n vec2 p=uv*2.-1.;vec3 d=normalize(vec3(p.x*aspect*tanfov,p.y*tanfov,1.));\n d=ry(yaw)*rx(pitch)*d;\n float lon=atan(d.x,d.z),lat=asin(clamp(d.y,-1.,1.));\n vec2 t=vec2(fract(lon/6.28318530718+.5),lat/3.14159265359+.5);\n gl_FragColor=highQuality==1?reconstruct(t):lookup(t);\n}\n";
+function shader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s}
+let program;try{program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vs));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));gl.useProgram(program)}catch(e){fail(e.message);throw e}
+const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const pos=gl.getAttribLocation(program,'a');gl.enableVertexAttribArray(pos);gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);const U={textureSize:gl.getUniformLocation(program,'textureSize'),highQuality:gl.getUniformLocation(program,'highQuality'),pano:gl.getUniformLocation(program,'pano'),yaw:gl.getUniformLocation(program,'yaw'),pitch:gl.getUniformLocation(program,'pitch'),tanfov:gl.getUniformLocation(program,'tanfov'),aspect:gl.getUniformLocation(program,'aspect')};
+const defaultFov=()=>innerWidth<=700?(innerHeight>=innerWidth?100:80):72;let texture=null,idx=0,yaw=0,pitch=0,fov=defaultFov(),drag=false,lx=0,ly=0,auto=false,nextAt=0;const nav=document.getElementById('nav'),info=document.getElementById('info');scenes.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.name;b.onclick=()=>load(i);nav.appendChild(b)});
+function update(){[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===idx));info.innerHTML='<b>'+scenes[idx].name+'</b>'+scenes[idx].info}
+// Small first-frame previews; upgrade in place without clearing the canvas.
+let loadGeneration=0, sceneLoading=false, hdReady=false, displayedScene=-1;
+const maxBufferSize=gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);
+const highQualityRender=new URLSearchParams(location.search).get('render')!=='linear';
+gl.uniform1i(U.highQuality,highQualityRender?1:0);
+let detailMode=new URLSearchParams(location.search).get('mode')==='detail';
+const detailFrame=document.createElement('div');detailFrame.className='detail-frame';document.body.append(detailFrame);
+const detailView=document.createElement('img');detailView.className='detail-view';detailView.hidden=true;detailView.alt='AI方案重点近景';detailFrame.append(detailView);
+document.body.classList.toggle('detail-mode',detailMode);
+const imageCache=new Map();
+function fetchImage(src, priority='high') {
+  if(imageCache.has(src))return imageCache.get(src);
+  const promise=new Promise((resolve,reject)=>{
+    const im=new Image();im.fetchPriority=priority;
+    const timer=setTimeout(()=>{im.src='';reject(new Error('下载超时'))},30000);
+    im.onload=()=>{clearTimeout(timer);resolve(im)};
+    im.onerror=()=>{clearTimeout(timer);reject(new Error('图片无法读取'))};
+    im.src=src;
+  });
+  imageCache.set(src,promise);
+  promise.catch(()=>{if(imageCache.get(src)===promise)imageCache.delete(src)});
+  // Bound decoded image memory on phones, while retaining current/next views.
+  while(imageCache.size>3)imageCache.delete(imageCache.keys().next().value);
+  return promise;
+}
+function showTexture(im) {
+  const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+  gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,im);
+  gl.uniform2f(U.textureSize,im.naturalWidth,im.naturalHeight);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  if(texture)gl.deleteTexture(texture);texture=t;gl.uniform1i(U.pano,0);
+}
+function status(message) {
+  loading.textContent=message;
+  loading.classList.toggle('compact',Boolean(texture)||displayedScene>=0);
+  loading.classList.remove('hide');
+}
+async function load(i) {
+  const generation=++loadGeneration;idx=i;update();sceneLoading=true;hdReady=false;
+  status('正在加载：'+scenes[i].name);
+  const scene=scenes[i],current=()=>generation===loadGeneration;
+  let previewShown=false;
+  try {
+    if(detailMode&&scene.detailSrc){
+      const image=await fetchImage(scene.detailSrc);
+      if(!current())return;
+      detailView.src=image.src;detailView.alt=scene.name+' · AI方案近景';detailView.hidden=false;
+      detailFrame.hidden=false;
+      requestAnimationFrame(()=>{detailFrame.scrollLeft=Math.max(0,(detailFrame.scrollWidth-detailFrame.clientWidth)/2);});
+      displayedScene=i;hdReady=true;sceneLoading=false;loading.classList.add('hide');
+      nextAt=performance.now()+9000;
+      const next=scenes[(i+1)%scenes.length];
+      if(next.detailSrc)fetchImage(next.detailSrc,'low').catch(()=>{});
+      return;
+    }
+    detailView.hidden=true;
+    detailFrame.hidden=true;
+    if(scene.preview){
+      try {
+        const preview=await fetchImage(scene.preview);
+        if(!current())return;
+        showTexture(preview);displayedScene=i;previewShown=true;
+        nextAt=performance.now()+9000;status('画面已显示，正在提升清晰度…');
+      }catch(e){if(!current())return;}
+    }
+    const next=scenes[(i+1)%scenes.length];
+    if(next.preview)fetchImage(next.preview,'low').catch(()=>{});
+    const high=await fetchImage(scene.src);
+    if(!current())return;
+    showTexture(high);displayedScene=i;hdReady=true;sceneLoading=false;loading.classList.add('hide');
+    nextAt=performance.now()+9000;
+    if(auto&&!navigator.connection?.saveData)fetchImage(next.src,'low').catch(()=>{});
+  }catch(e){
+    if(!current())return;sceneLoading=false;
+    if(previewShown||texture||displayedScene>=0){status('加载较慢，点击此处重试');}
+    else {fail('网络较慢，点击此处重试');}
+  }
+}
+loading.onclick=()=>load(idx);
+loading.setAttribute('role','status');
+loading.setAttribute('aria-live','polite');
+const modeButton=document.createElement('button');modeButton.id='viewMode';
+modeButton.textContent=detailMode?'360°环视':'重点近景';document.querySelector('.tools').prepend(modeButton);
+function updateViewHint(){document.getElementById('hint').textContent=detailMode?'近景左右滑动 · AI方案示意，非现场实拍':'拖动环视 · 滚轮缩放 · 点击场景切换';}
+updateViewHint();
+modeButton.onclick=()=>{detailMode=!detailMode;document.body.classList.toggle('detail-mode',detailMode);modeButton.textContent=detailMode?'360°环视':'重点近景';updateViewHint();load(idx);};
+const imageButton=document.createElement('button');imageButton.id='detailOriginal';imageButton.textContent='查看原图';
+const originalPanel=document.createElement('div');originalPanel.className='original-panel';originalPanel.hidden=true;
+const originalClose=document.createElement('button');originalClose.textContent='返回巡游';originalClose.className='original-close';
+const originalImage=document.createElement('img');originalImage.alt='方案近景原图，可滚动查看细节';
+originalPanel.append(originalClose,originalImage);document.body.append(originalPanel);
+originalClose.onclick=()=>{originalPanel.hidden=true;nextAt=performance.now()+9000;};
+imageButton.onclick=()=>{if(detailView.src){auto=false;document.getElementById('auto').textContent='自动巡游';update();originalImage.src=detailView.src;originalPanel.hidden=false;}};
+document.querySelector('.tools').prepend(imageButton);
+
+function draw(now){if(detailMode){if(auto&&now>nextAt&&!sceneLoading){nextAt=now+9000;load((idx+1)%scenes.length)}requestAnimationFrame(draw);return;}const d=Math.min(devicePixelRatio||1,3,Math.sqrt(8388608/(innerWidth*innerHeight)),maxBufferSize/Math.max(innerWidth,innerHeight)),w=Math.max(1,Math.round(innerWidth*d)),h=Math.max(1,Math.round(innerHeight*d));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h)}if(auto){yaw+=.0008;if(now>nextAt&&!sceneLoading){nextAt=now+9000;load((idx+1)%scenes.length)}}gl.clearColor(.02,.08,.11,1);gl.clear(gl.COLOR_BUFFER_BIT);if(texture){gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1f(U.yaw,yaw);gl.uniform1f(U.pitch,pitch);gl.uniform1f(U.tanfov,Math.tan(fov*Math.PI/360));gl.uniform1f(U.aspect,w/h);gl.drawArrays(gl.TRIANGLES,0,6)}requestAnimationFrame(draw)}requestAnimationFrame(draw);load(0);if(new URLSearchParams(location.search).get('auto')==='1'){auto=true;document.getElementById('auto').textContent='停止巡游';nextAt=performance.now()+9000}
+canvas.onpointerdown=e=>{drag=true;lx=e.clientX;ly=e.clientY;canvas.classList.add('drag');canvas.setPointerCapture(e.pointerId)};canvas.onpointerup=()=>{drag=false;canvas.classList.remove('drag')};canvas.onpointercancel=canvas.onpointerup;canvas.onpointermove=e=>{if(!drag)return;yaw-=(e.clientX-lx)*.0043;pitch=Math.max(-1.535,Math.min(1.535,pitch-(e.clientY-ly)*.0037));lx=e.clientX;ly=e.clientY};canvas.onwheel=e=>{e.preventDefault();fov=Math.max(42,Math.min(110,fov+e.deltaY*.035))};document.getElementById('out').onclick=()=>fov=Math.min(110,fov+8);document.getElementById('in').onclick=()=>fov=Math.max(42,fov-8);document.getElementById('reset').onclick=()=>{yaw=0;pitch=0;fov=defaultFov()};document.getElementById('auto').onclick=e=>{auto=!auto;e.currentTarget.textContent=auto?'停止巡游':'自动巡游';nextAt=performance.now()+9000};document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();addEventListener('orientationchange',()=>setTimeout(()=>{fov=defaultFov()},180));
+
+// Native UI text remains legible independently of panorama texture resolution.
+const facilityLabels=[
+ ['卫生间',482,390],['淋浴间',614,390],['洗衣房',1079,390],
+ ['驻车集超市',1198,390],['共享厨房',1311,390],['办公接待',1425,390],
+ ['露营区 · 房车区 · 淋浴间 · 观景台',1720,423],
+];
+const labelLayer=document.createElement('div');labelLayer.className='facility-labels';document.body.append(labelLayer);
+const facilityNodes=facilityLabels.map(([name])=>{
+ const node=document.createElement('span');node.className='facility-label';node.textContent=name;labelLayer.append(node);return node;
+});
+function updateFacilityLabels(){
+ labelLayer.hidden=displayedScene!==5||detailMode;
+ const tan=Math.tan(fov*Math.PI/360),aspect=innerWidth/innerHeight;
+ const placed=[];
+ facilityLabels.forEach(([name,u,v],i)=>{
+  const lon=(u/1774-.5)*Math.PI*2,lat=(.5-v/887)*Math.PI;
+  const dx=Math.sin(lon)*Math.cos(lat),dy=Math.sin(lat),dz=Math.cos(lon)*Math.cos(lat);
+  const x=Math.cos(yaw)*dx-Math.sin(yaw)*dz,z0=Math.sin(yaw)*dx+Math.cos(yaw)*dz;
+  const y=Math.cos(pitch)*dy+Math.sin(pitch)*z0,z=-Math.sin(pitch)*dy+Math.cos(pitch)*z0;
+  const px=innerWidth/2*(1+x/(z*tan*aspect)),py=innerHeight/2*(1-y/(z*tan));
+  const node=facilityNodes[i];
+  const width=node.offsetWidth||100;
+  const visible=z>.1&&px>width/2+8&&px<innerWidth-width/2-8&&py>170&&py<innerHeight-155;
+  const overlap=placed.some(([x0,y0,w0])=>Math.abs(px-x0)<(width+w0)/2+8&&Math.abs(py-y0)<42);
+  node.hidden=!visible||overlap;
+  if(visible&&!overlap){node.style.left=px+'px';node.style.top=(py-22)+'px';placed.push([px,py,width]);}
+ });
+ requestAnimationFrame(updateFacilityLabels);
+}
+requestAnimationFrame(updateFacilityLabels);
+const reportButton=document.createElement('button');reportButton.textContent='汇报阅读';reportButton.id='reportMode';document.querySelector('.tools').prepend(reportButton);
+const reportPanel=document.createElement('section');reportPanel.className='report-panel';reportPanel.hidden=true;
+reportPanel.innerHTML='<div class="report-caption">方案展示 · 场景说明</div><h2></h2><p></p><div class="report-facilities"></div>';document.body.append(reportPanel);
+const originalUpdate=update;
+update=function(){originalUpdate();reportPanel.querySelector('h2').textContent=scenes[idx].name;reportPanel.querySelector('p').textContent=scenes[idx].info;reportPanel.querySelector('.report-facilities').textContent=idx===5?'卫生间 / 淋浴间 / 洗衣房 / 驻车集超市 / 共享厨房 / 办公接待':'';};update();
+reportButton.onclick=()=>{
+ const active=!document.body.classList.contains('report-mode');document.body.classList.toggle('report-mode',active);
+ reportPanel.hidden=!active;reportButton.textContent=active?'退出阅读':'汇报阅读';
+ if(active){auto=false;document.getElementById('auto').textContent='自动巡游';yaw=0;pitch=0;fov=defaultFov();}
+};
+
+</script><style>.expanded-entry{position:fixed;z-index:6;right:18px;bottom:72px;color:#f0fbff;background:#124a5c;border:1px solid #65c7d8;text-decoration:none;border-radius:12px;padding:9px 13px;font:600 13px "Microsoft YaHei",sans-serif}@media(max-width:700px){.expanded-entry{right:8px;bottom:115px;padding:8px 10px;font-size:12px}}</style><a class="expanded-entry" href="expanded_scenes/index.html">16 场景近景展示 ↗</a></body></html>
